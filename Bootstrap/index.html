@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Prototype - Performance Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .card-hover {
+            transition: transform 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-rocket-takeoff"></i> Bootstrap Prototype
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Welcome to Bootstrap Prototype</h1>
+            <p class="lead mb-4">A performance comparison prototype for framework benchmarking</p>
+            <button class="btn btn-light btn-lg me-2" id="primaryBtn">Get Started</button>
+            <button class="btn btn-outline-light btn-lg" id="secondaryBtn">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-hover h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-speedometer2 display-4 text-primary mb-3"></i>
+                            <h5 class="card-title">Fast Performance</h5>
+                            <p class="card-text">Optimized for speed and efficiency with minimal overhead.</p>
+                            <button class="btn btn-primary">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-hover h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-shield-check display-4 text-success mb-3"></i>
+                            <h5 class="card-title">Secure & Reliable</h5>
+                            <p class="card-text">Built with security best practices and reliability in mind.</p>
+                            <button class="btn btn-success">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-hover h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-people display-4 text-info mb-3"></i>
+                            <h5 class="card-title">User Friendly</h5>
+                            <p class="card-text">Intuitive interface designed for the best user experience.</p>
+                            <button class="btn btn-info">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Contact Us</h2>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Bootstrap Prototype. Performance Testing Framework.</p>
+        </div>
+    </footer>
+
+    <!-- Performance Metrics Display -->
+    <div id="metrics" class="position-fixed bottom-0 end-0 m-3 p-3 bg-dark text-white rounded shadow-lg" style="min-width: 200px; font-size: 0.85rem;">
+        <h6 class="mb-2">Performance Metrics</h6>
+        <div id="metricsContent"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="performance.js"></script>
+    <script>
+        // Interactive functionality
+        document.getElementById('primaryBtn').addEventListener('click', function() {
+            alert('Get Started clicked!');
+        });
+
+        document.getElementById('secondaryBtn').addEventListener('click', function() {
+            alert('Learn More clicked!');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! (This is a prototype)');
+        });
+    </script>
+</body>
+</html>
+
+
+

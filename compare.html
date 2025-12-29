@@ -1,0 +1,283 @@
+QD1S YUHJKL;'/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <
+    meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework Comparison Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+        .metric-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+    +   }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .framework-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .framework-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+        }
+        .framework-card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .stat-label {
+            color: #666;
+        }
+        .stat-value {
+            font-weight: bold;
+            color: #333;
+        }
+        .winner {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .instructions {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .instructions h3 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            color: #555;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Framework Performance Comparison</h1>
+        
+        <div class="instructions">
+            <h3>📋 How to Use This Comparison Tool</h3>
+            <ol>
+                <li>Open <code>Bootstrap/index.html</code> in your browser</li>
+                <li>Wait for the page to fully load and note the metrics</li>
+                <li>Open <code>TailwindCSS/index.html</code> in another tab</li>
+                <li>Wait for the page to fully load and note the metrics</li>
+                <li>Manually enter the values below to see a side-by-side comparison</li>
+                <li>Or use browser DevTools (F12) → Performance tab for detailed analysis</li>
+            </ol>
+        </div>
+
+        <div class="framework-comparison">
+            <div class="framework-card">
+                <h2>Bootstrap</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Load Time:</span>
+                    <span class="stat-value" id="bootstrap-load">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">DOM Ready:</span>
+                    <span class="stat-value" id="bootstrap-dom">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">First Paint:</span>
+                    <span class="stat-value" id="bootstrap-fp">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">FCP:</span>
+                    <span class="stat-value" id="bootstrap-fcp">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Bundle Size:</span>
+                    <span class="stat-value" id="bootstrap-size">-</span>
+                </div>
+            </div>
+
+            <div class="framework-card">
+                <h2>TailwindCSS</h2>
+                <div class="stat-row">
+                    <span class="stat-label">Load Time:</span>
+                    <span class="stat-value" id="tailwind-load">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">DOM Ready:</span>
+                    <span class="stat-value" id="tailwind-dom">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">First Paint:</span>
+                    <span class="stat-value" id="tailwind-fp">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">FCP:</span>
+                    <span class="stat-value" id="tailwind-fcp">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Bundle Size:</span>
+                    <span class="stat-value" id="tailwind-size">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-grid" id="comparisonResults" style="display: none;">
+            <div class="metric-card" id="loadTimeCard">
+                <h3>Load Time</h3>
+                <div class="metric-value" id="loadTimeValue">-</div>
+                <div class="metric-label" id="loadTimeLabel">-</div>
+            </div>
+            <div class="metric-card" id="domCard">
+                <h3>DOM Ready</h3>
+                <div class="metric-value" id="domValue">-</div>
+                <div class="metric-label" id="domLabel">-</div>
+            </div>
+            <div class="metric-card" id="bundleCard">
+                <h3>Bundle Size</h3>
+                <div class="metric-value" id="bundleValue">-</div>
+                <div class="metric-label" id="bundleLabel">-</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="margin-bottom: 15px; color: #333;">💡 Tips for Accurate Testing</h3>
+            <ul style="margin-left: 20px; color: #555;">
+                <li>Clear browser cache before testing</li>
+                <li>Use incognito/private browsing mode</li>
+                <li>Test multiple times and average the results</li>
+                <li>Use Chrome DevTools Performance tab for detailed analysis</li>
+                <li>Check Network tab to see actual resource sizes</li>
+                <li>Test on different network speeds (throttling)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // This page helps visualize the comparison
+        // Users can manually enter values or use browser console to set them
+        
+        // Example: To set Bootstrap metrics, run in console:
+        // localStorage.setItem('bootstrapMetrics', JSON.stringify({loadTime: 1200, domReady: 800, ...}));
+        
+        function loadMetrics() {
+            const bootstrap = JSON.parse(localStorage.getItem('bootstrapMetrics') || '{}');
+            const tailwind = JSON.parse(localStorage.getItem('tailwindMetrics') || '{}');
+            
+            if (bootstrap.loadTime) {
+                document.getElementById('bootstrap-load').textContent = bootstrap.loadTime + ' ms';
+                document.getElementById('bootstrap-dom').textContent = bootstrap.domReady + ' ms';
+                document.getElementById('bootstrap-fp').textContent = (bootstrap.firstPaint || '-') + ' ms';
+                document.getElementById('bootstrap-fcp').textContent = (bootstrap.firstContentfulPaint || '-') + ' ms';
+                document.getElementById('bootstrap-size').textContent = (bootstrap.bundleSize / 1024).toFixed(2) + ' KB';
+            }
+            
+            if (tailwind.loadTime) {
+                document.getElementById('tailwind-load').textContent = tailwind.loadTime + ' ms';
+                document.getElementById('tailwind-dom').textContent = tailwind.domReady + ' ms';
+                document.getElementById('tailwind-fp').textContent = (tailwind.firstPaint || '-') + ' ms';
+                document.getElementById('tailwind-fcp').textContent = (tailwind.firstContentfulPaint || '-') + ' ms';
+                document.getElementById('tailwind-size').textContent = (tailwind.bundleSize / 1024).toFixed(2) + ' KB';
+            }
+            
+            if (bootstrap.loadTime && tailwind.loadTime) {
+                compareMetrics(bootstrap, tailwind);
+            }
+        }
+        
+        function compareMetrics(bootstrap, tailwind) {
+            document.getElementById('comparisonResults').style.display = 'grid';
+            
+            // Load Time comparison
+            const loadDiff = ((bootstrap.loadTime - tailwind.loadTime) / tailwind.loadTime * 100).toFixed(1);
+            const loadWinner = bootstrap.loadTime < tailwind.loadTime ? 'Bootstrap' : 'TailwindCSS';
+            document.getElementById('loadTimeValue').textContent = loadWinner;
+            document.getElementById('loadTimeLabel').textContent = `${Math.abs(loadDiff)}% ${loadDiff > 0 ? 'slower' : 'faster'}`;
+            if (loadWinner === 'Bootstrap') {
+                document.getElementById('loadTimeCard').classList.add('winner');
+            }
+            
+            // DOM Ready comparison
+            const domDiff = ((bootstrap.domReady - tailwind.domReady) / tailwind.domReady * 100).toFixed(1);
+            const domWinner = bootstrap.domReady < tailwind.domReady ? 'Bootstrap' : 'TailwindCSS';
+            document.getElementById('domValue').textContent = domWinner;
+            document.getElementById('domLabel').textContent = `${Math.abs(domDiff)}% ${domDiff > 0 ? 'slower' : 'faster'}`;
+            if (domWinner === 'Bootstrap') {
+                document.getElementById('domCard').classList.add('winner');
+            }
+            
+            // Bundle Size comparison
+            const sizeDiff = ((bootstrap.bundleSize - tailwind.bundleSize) / tailwind.bundleSize * 100).toFixed(1);
+            const sizeWinner = bootstrap.bundleSize < tailwind.bundleSize ? 'Bootstrap' : 'TailwindCSS';
+            document.getElementById('bundleValue').textContent = sizeWinner;
+            document.getElementById('bundleLabel').textContent = `${Math.abs(sizeDiff)}% ${sizeDiff > 0 ? 'larger' : 'smaller'}`;
+            if (sizeWinner === 'Bootstrap') {
+                document.getElementById('bundleCard').classList.add('winner');
+            }
+        }
+        
+        // Auto-load on page load
+        window.addEventListener('load', loadMetrics);
+    </script>
+</body>
+</html>
+
+
+

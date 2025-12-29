@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS Prototype - Performance Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white fixed top-0 w-full z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center text-xl font-bold">
+                    <i class="bi bi-rocket-takeoff mr-2"></i> TailwindCSS Prototype
+                </a>
+                <button class="md:hidden text-white" id="mobileMenuBtn">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+                <ul class="hidden md:flex space-x-6" id="desktopMenu">
+                    <li><a href="#home" class="text-white hover:text-gray-300 font-medium">Home</a></li>
+                    <li><a href="#features" class="text-white hover:text-gray-300 font-medium">Features</a></li>
+                    <li><a href="#contact" class="text-white hover:text-gray-300 font-medium">Contact</a></li>
+                </ul>
+            </div>
+            <div class="hidden md:hidden pb-4" id="mobileMenu">
+                <ul class="space-y-2">
+                    <li><a href="#home" class="block text-white hover:text-gray-300 py-2">Home</a></li>
+                    <li><a href="#features" class="block text-white hover:text-gray-300 py-2">Features</a></li>
+                    <li><a href="#contact" class="block text-white hover:text-gray-300 py-2">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white pt-32 pb-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Welcome to TailwindCSS Prototype</h1>
+            <p class="text-xl md:text-2xl mb-8">A performance comparison prototype for framework benchmarking</p>
+            <button class="bg-white text-purple-600 px-8 py-3 rounded-lg text-lg font-semibold mr-4 hover:bg-gray-100 transition" id="primaryBtn">Get Started</button>
+            <button class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition" id="secondaryBtn">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card-hover bg-white rounded-lg shadow-md p-6 text-center">
+                    <i class="bi bi-speedometer2 text-6xl text-blue-600 mb-4"></i>
+                    <h5 class="text-2xl font-bold mb-3">Fast Performance</h5>
+                    <p class="text-gray-600 mb-4">Optimized for speed and efficiency with minimal overhead.</p>
+                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Read More</button>
+                </div>
+                <div class="card-hover bg-white rounded-lg shadow-md p-6 text-center">
+                    <i class="bi bi-shield-check text-6xl text-green-600 mb-4"></i>
+                    <h5 class="text-2xl font-bold mb-3">Secure & Reliable</h5>
+                    <p class="text-gray-600 mb-4">Built with security best practices and reliability in mind.</p>
+                    <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Read More</button>
+                </div>
+                <div class="card-hover bg-white rounded-lg shadow-md p-6 text-center">
+                    <i class="bi bi-people text-6xl text-cyan-600 mb-4"></i>
+                    <h5 class="text-2xl font-bold mb-3">User Friendly</h5>
+                    <p class="text-gray-600 mb-4">Intuitive interface designed for the best user experience.</p>
+                    <button class="bg-cyan-600 text-white px-6 py-2 rounded-lg hover:bg-cyan-700 transition">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-8">Contact Us</h2>
+                <form id="contactForm" class="bg-white rounded-lg shadow-md p-8">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-purple-700 transition">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 TailwindCSS Prototype. Performance Testing Framework.</p>
+        </div>
+    </footer>
+
+    <!-- Performance Metrics Display -->
+    <div id="metrics" class="fixed bottom-4 right-4 m-3 p-4 bg-gray-900 text-white rounded-lg shadow-xl" style="min-width: 200px; font-size: 0.85rem;">
+        <h6 class="mb-2 font-bold text-lg">Performance Metrics</h6>
+        <div id="metricsContent"></div>
+    </div>
+
+    <script src="performance.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Interactive functionality
+        document.getElementById('primaryBtn').addEventListener('click', function() {
+            alert('Get Started clicked!');
+        });
+
+        document.getElementById('secondaryBtn').addEventListener('click', function() {
+            alert('Learn More clicked!');
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! (This is a prototype)');
+        });
+    </script>
+</body>
+</html>
+
+
+
